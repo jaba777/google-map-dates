@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./main.css">
+    <script src="https://kit.fontawesome.com/26d4a64054.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<body>
+
+    <h1>Google Maps</h1>
+
+    <div id="map"></div>
+
+    <script defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7eSrf6s-r8Wn54fNWClhhe0Eo5LckRtA&callback=initMap">
+</script>
+
+
+<div class="container-poppup" tabindex="-1" role="dialog">
+  
+</div>
+
+
+<div class="error-popup" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Error</h5>
+        </div>
+        <div class="modal-body">
+          <p>This place is already added</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary error-close" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<section class="add-container container">
+ 
+</section>
+ 
+
+
+
+
+
+    <script src="./app.js"></script>
+</body>
+</html>
