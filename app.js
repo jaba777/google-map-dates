@@ -2,8 +2,14 @@ const containerPopup=document.querySelector('.container-poppup');
 let addContainer=document.querySelector('.add-container');
 const errorPopup=document.querySelector('.error-popup');
 
+let submitContainer=document.querySelector('.submit-container');
+
+const submitBtn=document.querySelector('.button-submit button');
+
 
 let popupArray= [];
+
+let fullObject={};
 
 let inputDateObject={
     startDate: [],
@@ -19,7 +25,7 @@ function initMap(){
 
     var options={
         center: {lat: 42.3154, lng: 43.3569},
-        zoom: 8,
+        zoom: 7,
         mapId: "715a3683b7b7bf8a"
       }
     
@@ -173,6 +179,13 @@ function updateCart(){
         
   
      })
+
+     if(popupArray.length!==0){
+      submitBtn.classList.add('block-btn');
+     } else{
+      submitBtn.classList.remove('block-btn');
+      localStorage.removeItem('CONT');
+     }
      
   }
 
@@ -180,12 +193,14 @@ function updateCart(){
 
   let onChangeinputStart=function(e){
     startDateValue=e.target.value;
-    //inputDateObject.startDate.shift();
-    //inputsDate();
+    inputDateObject.startDate =inputDateObject.startDate.slice(0,popupArray.length-1)
+    inputsDate();
   }
 
   let onChangeinputLast=function(e){
     endDateValue=e.target.value;
+    //inputDateObject.endDate.shift();
+    //inputsDate();
   }
 
 
@@ -234,11 +249,11 @@ function inputsDate(){
 
     for(let i=0;i<lastDate.length;i++){
         if(i==0){
-            lastDate[i].setAttribute('min','2022-02-09');
+            lastDate[i].setAttribute('min',inputDateObject.startDate[i]);
             lastDate[i].addEventListener('input',onChangeinputLast)
             lastDate[i].value=inputDateObject.endDate[i];
         }else{
-            lastDate[i].setAttribute('min',fullDateL);
+            lastDate[i].setAttribute('min',inputDateObject.startDate[i]);
             lastDate[i].addEventListener('input',onChangeinputLast)
             lastDate[i].value=inputDateObject.endDate[i];
         }
@@ -259,3 +274,34 @@ function inputsDate(){
 document.querySelector('.error-close').addEventListener('click',()=>{
     errorPopup.classList.remove('appear');
   })
+
+
+
+
+
+  submitBtn.addEventListener('click',()=>{
+    inputsDate();
+
+     fullObject={
+      firstDate: inputDateObject.startDate,
+      lastDate: inputDateObject.endDate,
+      popupArrayS: popupArray
+    }
+ 
+    localStorage.setItem('CONT',JSON.stringify(fullObject));
+
+    submitContainer.innerHTML='';
+
+ 
+
+    for(let i=0;i<popupArray.length;i++){
+      submitContainer.innerHTML+=`
+      <div class="submit-child">
+        <h5>${fullObject.popupArrayS[i].title}</h5>
+        <p>Start date: ${fullObject.firstDate[i]}</p>
+        <p>End date: ${fullObject.lastDate[i]}</p>
+      </div>
+      `
+    }
+
+  });
