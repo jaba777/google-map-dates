@@ -183,7 +183,6 @@ function updateCart(){
      if(popupArray.length!==0){
       submitBtn.classList.add('block-btn');
      } else{
-      submitBtn.classList.remove('block-btn');
       localStorage.removeItem('CONT');
      }
      
@@ -286,6 +285,10 @@ document.querySelector('.error-close').addEventListener('click',()=>{
       firstDate: inputDateObject.startDate,
       lastDate: inputDateObject.endDate,
       popupArrayS: popupArray
+    }
+
+    if(popupArray.length===0){
+      submitBtn.classList.remove('block-btn');
     }
  
     localStorage.setItem('CONT',JSON.stringify(fullObject));
