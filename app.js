@@ -222,14 +222,14 @@ function inputsDate(){
     let monthL = InputTargetDateL.getMonth()+1;
     let dayL = InputTargetDateL.getDate()+1;
     if(monthL <10){
-    monthL='0'+monthL
+    monthL=`0${monthL}`
     }
 
     if(dayL <10){
-    dayL='0'+dayL
+    dayL=`0${dayL}`
     }
 
-    let fullDateL = yearL+'-'+monthL+'-'+dayL;
+    let fullDateL = `${yearL}-${monthL}-${dayL}`; 
 
 
 
@@ -250,11 +250,11 @@ function inputsDate(){
         if(i==0){
             lastDate[i].setAttribute('min',inputDateObject.startDate[i]);
             lastDate[i].addEventListener('input',onChangeinputLast)
-            lastDate[i].value=inputDateObject.endDate[i];
+            lastDate[i].value=inputDateObject.endDate[i] || '';
         }else{
             lastDate[i].setAttribute('min',inputDateObject.startDate[i]);
             lastDate[i].addEventListener('input',onChangeinputLast)
-            lastDate[i].value=inputDateObject.endDate[i];
+            lastDate[i].value=inputDateObject.endDate[i] || '';
         }
         
     }
@@ -262,8 +262,6 @@ function inputsDate(){
 
     
 
-    console.log(inputDateObject.startDate)
-    console.log(inputDateObject.endDate)
 }
   
 
