@@ -133,12 +133,6 @@ if(index === popupArray.length){
 
     
     updateCart();
-
-    console.log(index,popupArray.length)
-
-    console.log(inputDateObject.startDate)
-    console.log(inputDateObject.endDate)
-    
   }
 
 

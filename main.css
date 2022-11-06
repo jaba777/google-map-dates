@@ -111,17 +111,11 @@ body{
 
 .submit-container{
     display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 50%;
-    left: 0.5rem;
-    
+    margin: 1rem 0.5rem;
+    gap: 1rem;
 }
 .submit-container .submit-child{
     line-height: 1px;
-    border: 1px solid #000;
+    border: 1px solid rgb(36, 183, 209);
     padding: 0.2rem 0.4rem;
-}
-.submit-child p{
-    font-size: 12px;
 }
